@@ -1,0 +1,16 @@
+<%include ../partial/header%>
+<div class="text-center mb-4">
+        <img class="mb-4 signin-image--icon" src="https://upload.wikimedia.org/wikipedia/commons/4/48/You%27ve_got_mail.png" alt="signup-icon" width="72" height="72">
+        <h1 class="h3 mb-3 signup-heading">Comment</h1>
+    </div>
+    <form class="login-wholeform" action="/pivotalflow/blog/<%=blogid%>/comment/<%=edit._id%>?_method=PUT" method="POST">
+      <div class="form-label-group">
+        <input type="text" id="message" maxlength="200" name="comment[body]" class="form-control login-form" value="<%=edit.body%>" required autofocus>
+      </div>
+      <div class="text-center">
+            <button class="btn btn-lg signup-button" type="submit">Send</button>
+      </div>
+      <p class="mt-5 mb-3 text-muted text-center">&copy; 2019</p>
+    </form>
+      
+<%include ../partial/footer%>

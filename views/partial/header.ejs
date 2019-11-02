@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>PivotalFlow</title>
+        <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap" rel="stylesheet">
+        <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+        <script src="https://js.stripe.com/v3/"></script>
+        <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">  
+        <link rel="stylesheet" type="text/css" href="/app.css">
+        <link rel="icon" href="https://dtb5pzswcit1e.cloudfront.net/assets/images/product_logos/icon_pivotalapplicationservice@2x.png">
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <h1 class="big-heading"><img class="company-icon" src="https://dtb5pzswcit1e.cloudfront.net/assets/images/product_logos/icon_pivotalapplicationservice@2x.png"/>  Pivotalflow</h1>
+                </div>
+                <div class="col-lg-8">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="heading-1">
+                                <h6 class="heading-email"><i class='fas fa-location-arrow top-icon' style='font-size:20px'></i>Email</h6>
+                                <p class="heading-email_para">youremail@email.com</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="heading-2">
+                                <h6 class="heading-call"><i class="fa fa-phone top-icon" style="font-size:20px"></i>Call</h6>
+                                <p class="heading-call_para">Call Us: + 1235 2355 98</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="heading-3">
+                                <a class="btn btn-lg heading-button">Free Consulting</a>
+                            </div>
+                        </div>
+                    </div>       
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid main-navbar p-0 ">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg navbar-dark">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"><p class="menu">Menu</p></span>
+                        </button>
+                        <div class="order-lg-last">
+                            <%if(!currentuser){%>
+                                <li class="nav-item">
+                                    <a class="nav-link text-center all-link account-login" href="/login">Login</a>
+                                </li>
+                            <%}else{%>
+                                <li class="nav-item">
+                                    <a class="nav-link text-center active all-link" href="/pivotalflow/account/<%=currentuser._id%>"><img class="user-photo" src="<%=currentuser.photo%>" alt="uesr-photo"></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-center all-link account-login" href="/logout">Logout</a>
+                                </li>
+                            <%}%>
+
+                        </div>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">                   
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item">
+                                <a class="nav-link home text-center all-link" href="/pivotalflow">Home</a>
+                            </li>
+                            <li class="nav-item">
+                            <a class="nav-link text-center all-link" href="/pivotalflow/about">About</a>
+                            </li>
+                            <li class="nav-item">
+                            <a class="nav-link text-center all-link" href="/pivotalflow/product">Products</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-center all-link" href="/pivotalflow/service">Services</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-center all-link" href="/pivotalflow/blog">Blog</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-center all-link" href="/pivotalflow/contact">Contact</a>
+                            </li>
+                        </ul>
+                        </div>
+                    </nav>
+                </div>
+        </div>
+        <div class="container">
+            <%if(error && error.length>0){%>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong class="alert-name"><%=error%></strong>
+                </div>
+            <%}%>
+            <%if(success && success.length>0){%>
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong class="alert-name"><%=success%></strong>
+                </div>
+            <%}%>
+        </div>
+        <script
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>

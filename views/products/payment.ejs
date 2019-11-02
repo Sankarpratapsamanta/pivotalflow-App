@@ -1,0 +1,58 @@
+<%include ../partial/header%>
+<div class="container">
+    <div class="cell example example5" id="example-5">
+        <h2 class="text-center text-white payment-checkout-heading">PAYMENT FORM</h2>
+        <h4 class="text-center text-white payment-checkout-amount">Your Total Amount : <%=payment.price%></h4>
+        <form action="/pivotalflow/product/<%=payment._id%>/charge" method="POST" id="payment-form">
+                <h4 id="card-errors" class="text-center"></h4>
+            <fieldset>
+                <legend class="card-only" data-tid="elements_examples.form.pay_with_card"><img class="payment-paywith-card--icon" src="https://cdn4.iconfinder.com/data/icons/digital-marketing-gradient-rave-and-glow/512/Credit_Card-512.png"/>  Pay with cards</legend>
+                <legend class="payment-request-available" data-tid="elements_examples.form.enter_card_manually">Or enter card details</legend>
+                <div class="row">
+                <div class="field">
+                    <label for="example5-name" data-tid="elements_examples.form.name_label">Name</label>
+                    <input id="example5-name" name="name" data-tid="elements_examples.form.name_placeholder" class="input" type="text" placeholder="Jane Doe" required="" autocomplete="name">
+                </div>
+                </div>
+                <div class="row">
+                <div class="field">
+                    <label for="example5-email" data-tid="elements_examples.form.email_label">Email</label>
+                    <input id="example5-email" name="email" data-tid="elements_examples.form.email_placeholder" class="input" type="text" placeholder="janedoe@gmail.com" required="" autocomplete="email">
+                </div>
+                <div class="field">
+                    <label for="example5-phone" data-tid="elements_examples.form.phone_label">Phone</label>
+                    <input id="example5-phone" name="phone" data-tid="elements_examples.form.phone_placeholder" maxlength="10" class="input" type="text" placeholder="(941) 555-0123" required="" autocomplete="tel">
+                </div>
+                </div>
+                <div data-locale-reversible>
+                <div class="row">
+                    <div class="field">
+                    <label for="example5-address" data-tid="elements_examples.form.address_label">Address</label>
+                    <input id="example5-address" name="address" data-tid="elements_examples.form.address_placeholder" class="input" type="text" placeholder="185 Berry St" required="" autocomplete="address-line1">
+                    </div>
+                </div>
+                <div class="row" data-locale-reversible>
+                    <div class="field">
+                    <label for="example5-city" data-tid="elements_examples.form.city_label">City</label>
+                    <input id="example5-city" data-tid="elements_examples.form.city_placeholder" class="input" type="text" placeholder="San Francisco" required="" autocomplete="address-level2">
+                    </div>
+                    <div class="field">
+                    <label for="example5-state" data-tid="elements_examples.form.state_label">State</label>
+                    <input id="example5-state" data-tid="elements_examples.form.state_placeholder" class="input empty" type="text" placeholder="CA" required="" autocomplete="address-level1">
+                    </div>
+                </div>
+                </div>
+                <div class="row">
+                <div class="field">
+                    <label for="example5-card" data-tid="elements_examples.form.card_label">Card</label>
+                    <div id="example5-card" class="input"></div>
+                </div>
+                </div>
+                <input type="hidden" value="<%=payment.description%>" name="description">
+                <input type="hidden" value="<%=payment.price%>" name="amount">
+                <button type="submit" id="card-button" data-tid="elements_examples.form.pay_button"><img class="payment-button-image" src="https://cdn3.iconfinder.com/data/icons/picons-social/57/56-apple-512.png">Pay</button>
+            </fieldset>
+        </form>
+    </div>      
+</div>
+<%include ../partial/footer%>

@@ -1,0 +1,16 @@
+<%include partial/header%>
+<section class="container">
+    <h1 class="forgot-password__heading">Forgot Password</h1>
+    <form action="/forgot" method="POST">
+        <div class="form-group forgot">
+            <label class="forgot-email__label" for="exampleInputEmail1">Username : </label>
+            <input type="text" class="form-control forgot-email reset-account" id="exampleInputEmail1"  name="username"  aria-describedby="emailHelp" placeholder="Enter username" required>
+            <label class="forgot-email__label" for="exampleInputEmail1">Reset Password : </label>
+            <input type="password" class="form-control forgot-email" id="exampleInputEmail1"  name="password" aria-describedby="emailHelp" placeholder="Enter Password" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Reset</button>
+    </form>
+</section>
+
+
+<%include partial/footer%>

@@ -1,0 +1,23 @@
+<%include ../partial/header%>
+<section class="addproduct-section">
+    <div class="row">
+        <div class="addproduct-container">
+            <form class="addproduct-form" action="/pivotalflow/product/<%=edit._id%>?_method=PUT" method="POST" enctype="multipart/form-data">
+                <h1 class="addproduct-heading">ADD YOUR PRODUCT..</h1>
+                <input type="text" id="title" class="form-control addproduct-input" value="<%=edit.title%>" name="title">
+                <label class="addproduct-label" for="title">Title</label>
+                <input type="file" class="form-control-file addproduct-input" value="/uploads/<%=edit.photo%>" name="photo" accept="image/*" id="file-photo">
+                <input type="number" id="price" class="form-control addproduct-input" value="<%=edit.price%>" name="price">
+                <label class="addproduct-label" for="price">Price</label>
+                <input type="text" id="description" class="form-control addproduct-input" value="<%=edit.description%>" name="description">
+                <label class="addproduct-label" for="description">Description</label>
+                <div class="addproduct-button-heading">
+                    <button class="btn btn-lg addproduct-button">Submit</button>
+                </div>
+            </form>
+            
+        </div>
+    </div>
+</section>
+ 
+<%include ../partial/footer%>

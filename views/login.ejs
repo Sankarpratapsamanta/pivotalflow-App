@@ -1,0 +1,28 @@
+<%include partial/header%>
+<div class="text-center mb-4">
+        <img class="mb-4 signin-image--icon signin-image" src="https://www.clipartmax.com/png/full/240-2409514_login-icon-png-single-sign-on-icon.png" alt="signin-icon" width="72" height="72">
+        <h1 class="h3 mb-3 signup-heading">Sign In</h1>
+</div>
+    <form class="login-wholeform" action="/login" method="POST">
+      <div class="form-label-group">
+        <input type="text" name="username" class="form-control login-form" placeholder="UserName" required autofocus>
+      </div>
+      <div class="form-label-group text-center">
+        <input type="password" name="password" minlength="8" class="form-control login-form" placeholder="Password" required>
+      </div>
+      <div class="text-center">
+            <button class="btn btn-lg signup-button" type="submit">Login</button>
+      </div>
+      <div class="way-to-forgot">
+          <p><a class="" href="/forgot">Forgot Password ? </a></p>
+      </div>
+      <div class="way-to-signup">
+        <p class="not-a-member">Not a member ? </p>
+        <p><a class="way-to-signup-link" href="/signup">Sign up</a></p>
+      </div>
+      
+      <p class="mt-5 mb-3 text-muted text-center">&copy; 2019</p>
+    </form>
+
+
+<%include partial/footer%>

@@ -1,0 +1,154 @@
+<%include ../partial/header%>
+<section class="product-section">
+    <div class="container">
+        <h3 class="text-center about-heading">Products</h3>
+        <h6 class="text-center about-heading-2"><a href="/pivotalflow">HOME<i class="material-icons arrow-right">keyboard_arrow_right</i></a>               PRODUCTS<i class="material-icons arrow-right">keyboard_arrow_right</i></h6>  
+    </div>
+</section>
+<section class="are-product">
+    <div class="container">
+        <div class="text-center">
+            <p class="add-product-para"><img class="add-product-icon" src="http://www.ketoanhanoi.vn/wp-content/uploads/2014/12/tay-chi-huong-xanh.png" alt="add-product-icon"/><a class="way-to-product" href="/pivotalflow/addproduct">Add your Products</a>
+                <i class="material-icons way-to-product-icon" style="font-size:25px">keyboard_arrow_right</i>
+                <i class="material-icons way-to-product-icon" style="font-size:25px">keyboard_arrow_right</i></p>
+        </div>
+        <div class="row">
+            <%product.forEach(function(newproduct){%>
+                <div class="col-md-4 col-sm-6 product-details">
+                    <div class="card-group product-card--group"data-aos="fade-up" data-aos-duration="500">
+                        <div class="card">
+                            <img src="<%=newproduct.photo%>" class="card-img-top product-card--photo" alt="...">
+                            <div class="card-body product-card-body">
+                                <p class="card-text product-card--discount"><i class="material-icons" style="font-size:23px">local_offer</i>  25%off</p>
+                                <p class="text-center product-card--price">Price : &#8377;<%=newproduct.price%></p>
+                                <h5 class="card-title text-center product-card--title"><%=newproduct.title%></h5>
+                                <p class="text-center"><a href="/pivotalflow/product/<%=newproduct._id%>/checkout" class="btn btn-md product-card--button"><img class="buy-now-button--icon" src="https://cdn3.iconfinder.com/data/icons/picons-social/57/56-apple-512.png" alt="buy-now-icon"/> Buy Now</a></p>
+                                <p class="text-center"><a href="/pivotalflow/product/<%=newproduct._id%>" class="btn btn-md product-card--button"><img class="buy-now-button--icon" src="https://cdn1.iconfinder.com/data/icons/education-set-4/512/information-2-512.png" alt="more-details-icon"/> More Details</a></p>
+                                <p class="card-text text-center product-owner--name"><small class="text-muted">PRODUCT BY : <%=newproduct.author.username%></small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <%});%>
+        </div>
+        
+        <div class="text-center pagination">
+        <% if (pages > 0) { %>
+            <ul class="pagination text-center">
+                <% if (current == 1) { %>
+                    <li class="disabled"><a class="pagination-step"><i class="material-icons">keyboard_arrow_left</i>First</a></li>
+                <% } else { %>
+                    <li><a class="pagination-step" href="/pivotalflow/products/1">
+                        <i class="material-icons pagination-left--icon">keyboard_arrow_left</i>
+                        <i class="material-icons pagination-left--icon">keyboard_arrow_left</i>First</a></li>
+                <% } %>
+                <% var i = (Number(current) > 5 ? Number(current) - 4 : 1) %>
+                <% if (i !== 1) { %>
+                    <li class="disabled"><a class="pagination-step">...</a></li>
+                <% } %>
+                <% for (; i <= (Number(current) + 4) && i <= pages; i++) { %>
+                    <% if (i == current) { %>
+                        <li class="active"><a class="pagination-step"><%= i %></a></li>
+                    <% } else { %>
+                        <li><a class="pagination-step" href="/pivotalflow/products/<%= i %>"><%= i %></a></li>
+                    <% } %>
+                    <% if (i == Number(current) + 4 && i < pages) { %>
+                        <li class="disabled"><a class="pagination-step">...</a></li>
+                    <% } %>
+                <% } %>
+                <% if (current == pages) { %>
+                    <li class="disabled"><a class="pagination-step">Last<i class="material-icons">keyboard_arrow_right</i></a></li>
+                <% } else { %>
+                    <li><a class="pagination-step" href="/pivotalflow/products/<%= pages %>">Last
+                        <i class="material-icons pagination-icon">keyboard_arrow_right</i>
+                        <i class="material-icons pagination-icon">keyboard_arrow_right</i></a></li>
+                <% } %>
+            </ul>
+        <% } %>
+        </div>
+    </div>
+</section>
+
+<section class="footer-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <h5 class="footer-question">Have a Questions?</h5>
+                <div class="location">
+                        <span class="location-icon"><i class="material-icons">location_on</i></span>
+                        <p class="footer-para">	203 Fake St. Mountain View, San Francisco, California, USA</p>
+                </div>
+                <div class="footer-phone">
+                    <span class="phone-icon"><i class="fa fa-phone"style="font-size:24px"></i></span>
+                    <p class="footer-para">+2 392 3929 210</p>
+                </div>
+                <div class="footer-mail">
+                    <span class="mail-icon"><i class="material-icons">email</i></span>
+                    <p class="footer-para">info@yourdomain.com</p>
+                </div>
+                </div>
+                <div class="col-md-3">
+                    <h5 class="footer-question">Recent Blog</h5>
+                    <div class="card mb-3 footer-blog" style="max-width: 540px;">
+                        <div class="row no-gutters">
+                            <div class="col-md-4">
+                            <img src="https://nycofficesuites.com/wp-content/uploads/2017/09/Two-men-having-a-discussion-during-a-business-lunch-1.jpg" class="card-img footer-blog-img" alt="...">
+                            </div>
+                            <div class="col-md-8">
+                            <div class="card-body footer-card-body">
+                                <p class="card-text footer-blog-para"data-aos="fade-up" data-aos-duration="1000">Even the all-powerful Pointing has no control about</p>
+                                <p class="card-text footer-calender"><small class="text-muted"><i class='fas fa-calendar-alt'></i> June 27, 2019</small></p>
+                                <p class="card-text"><small class="text-muted"><i class='fas fa-user'></i>    Admin</small></p>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card mb-3 footer-blog" style="max-width: 540px;">
+                        <div class="row no-gutters">
+                            <div class="col-md-4">
+                            <img src="https://s29814.pcdn.co/wp-content/uploads/2018/01/shutterstock_18152863-1024x683.jpg" class="card-img footer-blog-img" alt="...">
+                            </div>
+                            <div class="col-md-8">
+                            <div class="card-body footer-card-body">
+                                <p class="card-text footer-blog-para"data-aos="fade-up"  data-aos-duration="1000">Even the all-powerful Pointing has no control about</p>
+                                <p class="card-text footer-calender"><small class="text-muted"><i class='fas fa-calendar-alt'></i> June 28, 2019</small></p>
+                                <p class="card-text"><small class="text-muted"><i class='fas fa-user'></i>    Admin</small></p>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <h5 class="footer-question">Links</h5>
+                    <div class="footer-links">
+                        <p><a href="#"><i class='fas fa-arrow-right'></i>  Home</a></p>
+                        <p><a href="#"><i class='fas fa-arrow-right'></i>  About</a></p>
+                        <p><a href="#"><i class='fas fa-arrow-right'></i>  Services</a></p>
+                        <p><a href="#"><i class='fas fa-arrow-right'></i>  Projects</a></p>
+                        <p><a href="#"><i class='fas fa-arrow-right'></i>  Contact</a></p>
+                    </div>                           
+                </div>
+                <div class="col-md-3">
+                    <h5 class="footer-question">Subscribe Us!</h5>
+                    <form class="subscribe-form">
+                            <input type="email" placeholder="Enter your Email" class="form-control footer-search" aria-describedby="emailHelp">
+                            <a class="btn btn-lg footer-subscribe">Subscribe</a>
+                    </form>
+                    <div class="contact">
+                        <h5 class="footer-question">Connect With Us</h5>
+                        <div class="social-icons">
+                            <p class="px-3"data-aos="fade-up"data-aos-duration="1000"><a href=""><i class='fab fa-facebook-square' style='font-size:36px'></i></a></p>
+                            <p class="pr-3"data-aos="fade-up"data-aos-duration="1000"><a href=""><i class='fab fa-twitter-square' style='font-size:36px'></i></a></p>
+                            <p data-aos="fade-up"data-aos-duration="1000"><a href=""><i class='fab fa-instagram' style='font-size:36px;color:red'></i></a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="text-center last-para">Copyright ©2019  All rights reserved | This website is made with <i class='fas fa-heart' style='font-size:20px'></i> by Sankar</p>
+        </div>
+    </section>
+</section>
+  
+<%include ../partial/footer%>
+
+

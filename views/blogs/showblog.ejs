@@ -1,0 +1,55 @@
+<%include ../partial/header%>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="card-deck">
+                    <div class="card blog-card"data-aos="flip-right">
+                        <img src="<%=myblog.photo%>" class="card-img-top" alt="photo">
+                        <div class="card-body">
+                            <p class="show-blog--date"><i class="fa fa-calendar"></i>    <%=myblog.created.toDateString()%></p>
+                            <p class="card-text show-blog--owner"><i class='fas fa-user show-owner--icon'></i>    <%=myblog.author.username%></p>
+                            <h5 class="card-title text-center title"><%=myblog.title%></h5>
+                            <p class="card-text text-center paragraph"><%=myblog.body%></p>
+                            <div class="card-bottom">
+                                <%if(currentuser && myblog.author.id.equals(currentuser._id)|| currentuser && currentuser.adminCode){%>
+                                    <a href="/pivotalflow/blog/<%=myblog._id%>/edit" class="btn btn-md blog-button">Edit  <i class='fas fa-edit'></i></a>
+                                    <form action="/pivotalflow/blog/<%=myblog._id%>?_method=DELETE" method="POST">
+                                        <button class="btn btn-md blog-button">Delete<i class='fas fa-arrow-alt-circle-right blog-arrow'></i></button> 
+                                    </form>
+                                    
+                                <%}else{%>
+                                    <a href="/pivotalflow/blog/<%=myblog._id%>/comment" class="btn btn-md blog-button">Comment<i class='fas fa-arrow-alt-circle-right blog-arrow'></i></a>
+                                <%}%>   
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="product-review">
+                    <h2 class="text-center product-review-name">Comments</h2>
+                    <hr class="style-one">
+                    <%myblog.comments.forEach(function(blogcomment){%>
+                        <p class="card-text comment-blog-body"><%=blogcomment.body%></p>
+                        <%if(currentuser && blogcomment.author.id.equals(currentuser._id) || currentuser && currentuser.adminCode){%>
+                            <div class="product-review--body">    
+                            <p><a class="blog-comment-edit" href="/pivotalflow/blog/<%=myblog._id%>/comment/<%=blogcomment._id%>/edit">Edit</a></p>
+                            <form action="/pivotalflow/blog/<%=myblog._id%>/comment/<%=blogcomment._id%>?_method=DELETE" method="POST">
+                                <input type="submit" value="Delete" class="delete"> 
+                            </form> 
+                        </div>
+                        <%}%>
+                        <div class="product-review--text">
+                            <p class="card-text text-muted comment-blog-ownername"><img class="comment-user-icon" src="https://toppng.com/public/uploads/preview/user-account-management-logo-user-icon-11562867145a56rus2zwu.png" alt="comment-user-icon"/> <%=blogcomment.author.username%>...</p>
+                            <p class="card-text text-muted"><%=blogcomment.created.toDateString()%></p>
+                        </div>
+                        <hr class="style-one">
+                    <%});%>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+ 
+<%include ../partial/footer%>

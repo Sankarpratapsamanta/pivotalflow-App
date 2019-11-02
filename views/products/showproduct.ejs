@@ -1,0 +1,49 @@
+<%include ../partial/header%>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="card-deck">
+                    <div class="card blog-card"data-aos="flip-right">
+                        <img src="<%=product.photo%>" class="card-img-top show-image" alt="photo">
+                        <div class="card-body">
+                            <p class="text-center product-card--price">Price : &#8377;<%=product.price%>  <span class="show-discount">25% off</span></p>
+                            <h5 class="card-title text-center title"><%=product.title%></h5>
+                            <p class="card-text text-center paragraph"><%=product.description%></p>
+                            <div class="card-bottom">
+                                <%if(currentuser && product.author.id.equals(currentuser._id) || currentuser && currentuser.adminCode){%>
+                                <a href="/pivotalflow/product/<%=product._id%>/edit" class="btn btn-md blog-button">Edit   <i class='fas fa-edit'></i></a>
+                                <form action="/pivotalflow/product/<%=product._id%>?_method=DELETE" method="POST">
+                                    <button class="btn btn-md blog-button">Delete<i class='fas fa-arrow-alt-circle-right blog-arrow'></i></button> 
+                                </form>
+                                <%}%>
+                            </div>
+                        </div>    
+                    </div>
+                </div>
+                <form action="/pivotalflow/product/<%=product._id%>" method="POST">
+                    <div class="form-label-group">
+                        <input type="text" name="comment[body]" maxlength="200" class="form-control login-form comment-form" placeholder="Put your Review" required autofocus>
+                        <button class="btn btn-md review-button">Send   <i class='fas fa-location-arrow'></i></button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-3">
+                <div class="product-review">
+                    <h2 class="text-center product-review-name">Reviews</h2>
+                    <hr class="style-one">
+                    <%product.comments.forEach(function(newcomment){%>
+                        <p class="card-text"><%=newcomment.body%></p>
+                        <div class="product-review--text">
+                            <p class="card-text text-muted"><%=newcomment.author.username%>...</p>
+                            <p class="card-text text-muted"><%=newcomment.created.toDateString()%></p>
+                        </div>
+                        <p class="card-text text-muted"><img class="product-reviews-icon" src="https://freeiconshop.com/wp-content/uploads/edd/checkmark-flat.png">Certified User</p>
+                    <%});%>
+                </div>
+            </div>
+        </div>    
+    </div>
+</section>
+  
+<%include ../partial/footer%>
